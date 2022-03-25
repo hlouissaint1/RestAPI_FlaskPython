@@ -65,10 +65,10 @@ class Database:
         return results
 
 if "__main__" == __name__:
-    query = "SELECT * FROM items WHERE name=?"
-    name = ('piano',)
-    resp = Database.retrieveDataQuery(query, name)
-    print(resp)
+    # query = "SELECT * FROM items WHERE name=?"
+    # name = ('piano',)
+    # resp = Database.retrieveDataQuery(query, name)
+    # print(resp)
     query = "SELECT * FROM items"
     resp = Database.retrieveDataQuery(query)
     print(resp)

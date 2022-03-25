@@ -8,7 +8,7 @@ from flask_jwt import jwt_required
 class Item(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument('price', type=float, required=True, help="This field cannot be empty")
-    parser.add_argument('store_id', type=int, required=True, help="Every item needs a store id")
+    parser.add_argument('stores_id', type=int, required=True, help="Every item needs a store id")
 
 
 #    @jwt_required()
@@ -21,13 +21,13 @@ class Item(Resource):
             return  {'message': f"{name} already exists."}, 400
         data = Item.parser.parse_args()
 #        item = ItemModel(name, **data)
-        item = ItemModel(name, data['price'], data['store_id'])
-        print(data['price'], data['store_id'])
+        item = ItemModel(name, data['price'], data['stores_id'])
         try:
-            item.save
+            item.save()
+            return {'message': f'{name} has been successfully saved.'}
         except:
             return {'message': f'Error while saving {name}.'}
-        return {'message': f'{name} has been successfully saved.'}
+
 
     def put(self, name):
         data = Item.parser.parse_args()

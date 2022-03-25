@@ -2,25 +2,21 @@ __author__ = "Himmler Louissaint"
 
 from Web_Development.Web_Tutorial_SQLAchemy.db import db
 
-class ItemModel(db.Model):
 
+class ItemModel(db.Model):
     __tablename__ = 'items'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80))
-    price = db.Column(db.Float(precision=2))
-    store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
-    store = db.relationship('StoreModel')
+    name = db.Column(db.String(80), nullable=False)
+    price = db.Column(db.Float(precision=2), nullable=False)
+    stores_id = db.Column(db.Integer, db.ForeignKey('stores.id'), nullable=False)
 
-    def __init__(self, name, price, store_id):
+    def __init__(self, name, price, stores_id):
         self.name = name
         self.price = price
-        self.store_id = store_id
+        self.stores_id = stores_id
 
     def json(self):
-        return {'name': self.name, 'price': self.price}
-
-    def __str__(cls):
-        return f"ItemModel(name={cls.name}"
+        return {'name': self.name, 'price': self.price, 'stores_id': self.stores_id}
 
     @classmethod
     def find_all(cls):
@@ -33,6 +29,7 @@ class ItemModel(db.Model):
     def save(self):
         db.session.add(self)
         db.session.commit()
+        print(self.id)
 
     def delete(self):
         db.session.delete(self)
@@ -41,4 +38,7 @@ class ItemModel(db.Model):
 
 if __name__ == '__main__':
     name = 'piano'
-    print(ItemModel.find_by_name(name))
+    item = ItemModel('saxophone', 1299, 1)
+    print(item.json())
+    db.session.add(item)
+ #   db.session.commit()
