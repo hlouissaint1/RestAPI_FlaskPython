@@ -3,7 +3,7 @@ __author__ = "Himmler Louissaint"
 from werkzeug.security import safe_str_cmp
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
-from models.user import UserModel
+from Web_Development.Web_Tutorial_SQLAchemy.models.user import UserModel
 
 
 def authenticate(username, password):

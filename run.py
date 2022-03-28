@@ -1,7 +1,7 @@
 __author__ = "Himmler Louissaint"
 
-from app import app
-from db import db
+from Web_Development.Web_Tutorial_SQLAchemy.app import app
+from Web_Development.Web_Tutorial_SQLAchemy.db import db
 
 db.init_app(app)
 
