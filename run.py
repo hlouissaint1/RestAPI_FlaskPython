@@ -1,4 +1,5 @@
 __author__ = "Himmler Louissaint"
+
 from app import app
 from db import db
 
