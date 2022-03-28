@@ -1,5 +1,5 @@
-Flask
-Flask-RESful
-Flask-JWT
-Flask-SQLAchemy
+Flask==2.0.3
+Flask-RESful==0.3.9
+Flask-JWT==0.3.2
+Flask-SQLAchemy==2.5.1
 uwsgi
